@@ -78,8 +78,12 @@ public class CharacterPane extends ScrollPane {
     public void drawPane(BasedCharacter character) {
         this.character = character;
         Pane characterInfo = getDetailPane();
-        this.setStyle("-fx-background-color:linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);");
+        this.setStyle(
+                "-fx-border-color: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);" +
+                        "-fx-border-width: 5px;" +
+                        "-fx-border-style: solid;" +
+                        "-fx-background-color: white;"
+        );
         this.setContent(characterInfo);
     }
 }
-

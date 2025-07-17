@@ -85,7 +85,12 @@ public class InventoryPane extends ScrollPane {
     public void drawPane(ArrayList<BasedEquipment> equipmentArray) {
         this.equipmentArray = equipmentArray;
         Pane inventoryInfo = getDetailsPane();
-        this.setStyle("-fx-background-color:linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);");
+        this.setStyle(
+                "-fx-border-color: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);" +
+                        "-fx-border-width: 5px;" +
+                        "-fx-border-style: solid;" +
+                        "-fx-background-color: white;"
+        );
         this.setContent(inventoryInfo);
     }
 }

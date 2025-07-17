@@ -112,7 +112,12 @@ public class EquipPane extends ScrollPane {
         this.equippedWeapon = equippedWeapon;
         this.equippedArmor = equippedArmor;
         Pane equipmentInfo = getDetailsPane();
-        this.setStyle("-fx-background-color:linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);");
+        this.setStyle(
+                "-fx-border-color: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);" +
+                        "-fx-border-width: 5px;" +
+                        "-fx-border-style: solid;" +
+                        "-fx-background-color: white;"
+        );
         this.setContent(equipmentInfo);
     }
 }
