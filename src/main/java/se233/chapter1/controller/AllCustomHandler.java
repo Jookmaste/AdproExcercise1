@@ -6,6 +6,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.StackPane;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import se233.chapter1.model.character.BasedCharacter;
 import se233.chapter1.model.item.Armor;
 import se233.chapter1.model.item.BasedEquipment;
@@ -16,6 +18,9 @@ import javafx.scene.image.Image;
 import java.util.ArrayList;
 
 public class AllCustomHandler {
+
+    private static final Logger logger = LoggerFactory.getLogger(AllCustomHandler.class);
+
     public static class GenCharacterHandler implements EventHandler<ActionEvent> {
         @Override
         public void handle(ActionEvent event) {
@@ -40,10 +45,6 @@ public class AllCustomHandler {
 
         BasedEquipment retrievedEquipment = (BasedEquipment)dragboard.getContent(BasedEquipment.DATA_FORMAT);
         BasedCharacter character = Launcher.getMainCharacter();
-
-//        if (dragboard.hasContent(BasedEquipment.DATA_FORMAT)
-//                && retrievedEquipment.getClass().getSimpleName().equals(type))
-//                event.acceptTransferModes(TransferMode.MOVE);
 
         if (retrievedEquipment.getClass().getSimpleName().equals(type)) {
             if (retrievedEquipment instanceof Weapon weapon) {
@@ -85,6 +86,9 @@ public class AllCustomHandler {
             Launcher.setMainCharacter(character);
             Launcher.setAllEquipments(allEquipments);
             Launcher.refreshPane();
+
+            logger.info( "{} Equipped item: {}", character.getName(), retrievedEquipment.getName());
+
             ImageView imgView = new ImageView();
             if (imgGroup.getChildren().size()!=1) {
                 imgGroup.getChildren().remove(1);
